@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridspire Web Design | Pearland, TX | Affordable Websites for Houston Businesses</title>
+    <meta name="description" content="Affordable, fast, and professional website design for small businesses in Pearland and the Greater Houston area. Starting at $299. Call (346) 461-5530.">
+    <meta name="keywords" content="web design Pearland TX, website designer Houston, affordable web design Texas, small business website, web developer Pearland">
+    <meta property="og:title" content="Gridspire Web Design | Pearland, TX">
+    <meta property="og:description" content="Professional websites for small businesses. Fast delivery, honest pricing, local service.">
+
+    <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║              GRIDSPIRE — OWNER ADMIN GUIDE                   ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  This file is YOUR website. You own it 100%.                 ║
+    ║                                                              ║
+    ║  TO UPDATE CONTENT — just search (Ctrl+F) for:              ║
+    ║   • "(346) 461-5530"  → your phone number                   ║
+    ║   • "hunterserg3@gmail.com" → your email                    ║
+    ║   • "$299" / "$599"   → your pricing                        ║
+    ║   • "Pearland"        → your location                       ║
+    ║   • Package features  → look for <li> inside .package-card  ║
+    ║                                                              ║
+    ║  TO HOST THIS SITE (FREE options):                           ║
+    ║   • Netlify.com — drag & drop this file to deploy           ║
+    ║   • GitHub Pages — free hosting with a GitHub account        ║
+    ║   • Vercel.com — another great free option                   ║
+    ║                                                              ║
+    ║  FORM SETUP:                                                 ║
+    ║   Currently the form sends an email via your mail app.       ║
+    ║   For automatic email delivery, sign up at formspree.io      ║
+    ║   (free), get your form ID, and replace the mailto logic.    ║
+    ╚══════════════════════════════════════════════════════════════╝
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:       #0B1A2E;
+            --navy-mid:   #122340;
+            --navy-card:  #0F2035;
+            --blue:       #2563EB;
+            --blue-light: #3B82F6;
+            --cyan:       #06B6D4;
+            --white:      #FFFFFF;
+            --off-white:  #F8FAFC;
+            --gray-50:    #F8FAFC;
+            --gray-100:   #F1F5F9;
+            --gray-200:   #E2E8F0;
+            --gray-400:   #94A3B8;
+            --gray-500:   #64748B;
+            --gray-700:   #334155;
+            --gray-900:   #0F172A;
+            --font-d:     'Outfit', sans-serif;
+            --font-b:     'Inter', sans-serif;
+            --r:          12px;
+            --rl:         20px;
+            --sh-lg:      0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --sh-xl:      0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-b);
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ───────────────────────────────────── */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.1rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(11, 26, 46, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            transition: padding .3s ease, box-shadow .3s ease;
+        }
+        .navbar.scrolled {
+            padding: .75rem 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.35);
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: .55rem; text-decoration: none;
+        }
+        .logo-grid {
+            width: 34px; height: 34px;
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 3px;
+        }
+        .logo-grid span {
+            border-radius: 2px; background: var(--blue);
+            transition: background .3s;
+        }
+        .logo-grid span:nth-child(3),
+        .logo-grid span:nth-child(6),
+        .logo-grid span:nth-child(9) { background: var(--cyan); }
+        .logo-text {
+            font-family: var(--font-d); font-weight: 800; font-size: 1.35rem;
+            color: var(--white); letter-spacing: -.03em;
+        }
+        .logo-text em { color: var(--cyan); font-style: normal; }
+        .nav-links {
+            display: flex; align-items: center; gap: 2rem; list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,.7); text-decoration: none;
+            font-size: .875rem; font-weight: 500; transition: color .2s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: var(--blue) !important; color: #fff !important;
+            padding: .55rem 1.35rem; border-radius: 8px; font-weight: 600 !important;
+        }
+        .nav-cta:hover { background: var(--blue-light) !important; transform: translateY(-1px); }
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none; padding: 4px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2px;
+            background: #fff; border-radius: 2px; transition: all .3s;
+        }
+        /* Mobile menu */
+        .mobile-menu {
+            display: none; position: fixed; inset: 0;
+            background: var(--navy); z-index: 999;
+            flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: #fff; text-decoration: none;
+            font-family: var(--font-d); font-size: 1.6rem; font-weight: 700;
+        }
+        .mobile-menu a:hover { color: var(--cyan); }
+        .mobile-close {
+            position: absolute; top: 1.5rem; right: 2rem;
+            background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer;
+        }
+
+        /* ── HERO ─────────────────────────────────────── */
+        .hero {
+            min-height: 100vh; background: var(--navy);
+            display: flex; align-items: center;
+            position: relative; overflow: hidden;
+            padding: 130px 2rem 80px;
+        }
+        /* Dot grid signature element */
+        .hero-dots {
+            position: absolute; inset: 0; z-index: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(37,99,235,.25) 1px, transparent 0);
+            background-size: 48px 48px;
+            animation: dotDrift 10s ease-in-out infinite alternate;
+        }
+        @keyframes dotDrift {
+            from { transform: translate(0,0);   opacity: .55; }
+            to   { transform: translate(8px,-8px); opacity: 1;  }
+        }
+        .hero-glow {
+            position: absolute; width: 700px; height: 700px; z-index: 0;
+            background: radial-gradient(circle, rgba(37,99,235,.12) 0%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%,-50%);
+            animation: glowBreathe 5s ease-in-out infinite;
+        }
+        @keyframes glowBreathe {
+            0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: .6; }
+            50%      { transform: translate(-50%,-50%) scale(1.12); opacity: 1;  }
+        }
+        .hero-inner {
+            position: relative; z-index: 1;
+            max-width: 1100px; margin: 0 auto; width: 100%;
+        }
+        .pill {
+            display: inline-flex; align-items: center; gap: .5rem;
+            background: rgba(37,99,235,.15); border: 1px solid rgba(37,99,235,.3);
+            color: var(--cyan); padding: .4rem 1rem; border-radius: 100px;
+            font-size: .82rem; font-weight: 500; margin-bottom: 1.5rem;
+            letter-spacing: .02em;
+        }
+        .pill-dot {
+            width: 7px; height: 7px; background: var(--cyan); border-radius: 50%;
+            animation: blink 2.2s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+        .hero h1 {
+            font-family: var(--font-d); font-weight: 900;
+            font-size: clamp(2.6rem, 5.5vw, 4.75rem);
+            color: #fff; line-height: 1.08; letter-spacing: -.04em; margin-bottom: 1.5rem;
+        }
+        .hero h1 .grad {
+            background: linear-gradient(130deg, var(--blue-light) 30%, var(--cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,.68);
+            max-width: 580px; line-height: 1.75; margin-bottom: 2.5rem;
+        }
+        .hero-btns {
+            display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem;
+        }
+        .btn-primary, .btn-secondary {
+            padding: .9rem 2rem; border-radius: 10px; font-size: .95rem;
+            font-weight: 600; text-decoration: none; display: inline-flex;
+            align-items: center; gap: .45rem; transition: all .25s;
+            font-family: var(--font-b); cursor: pointer; border: none;
+        }
+        .btn-primary {
+            background: var(--blue); color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37,99,235,.45);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,.08); color: #fff;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.16); transform: translateY(-2px);
+        }
+        .trust-row {
+            display: flex; gap: 2rem; flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: .45rem;
+            color: rgba(255,255,255,.55); font-size: .82rem;
+        }
+
+        /* ── SHARED SECTION STYLES ────────────────────── */
+        section { padding: 5.5rem 2rem; }
+        .inner { max-width: 1100px; margin: 0 auto; }
+        .eyebrow {
+            display: inline-block; color: var(--blue);
+            font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; margin-bottom: .75rem;
+        }
+        .section-h {
+            font-family: var(--font-d); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800; letter-spacing: -.03em; line-height: 1.15;
+            color: var(--gray-900); margin-bottom: .9rem;
+        }
+        .section-p {
+            font-size: 1.05rem; color: var(--gray-500); line-height: 1.75; max-width: 560px;
+        }
+        .centered { text-align: center; }
+        .centered .section-p { margin: 0 auto; }
+
+        /* ── SERVICES ─────────────────────────────────── */
+        .services { background: var(--gray-50); }
+        .pkg-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1.5rem; margin-top: 3.5rem; align-items: start;
+        }
+        .pkg {
+            background: #fff; border: 1.5px solid var(--gray-200);
+            border-radius: var(--rl); padding: 2.25rem;
+            position: relative; transition: all .3s;
+        }
+        .pkg:hover { transform: translateY(-7px); box-shadow: var(--sh-xl); }
+        .pkg.featured {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 1px var(--blue);
+        }
+        .featured-tag {
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: var(--blue); color: #fff; font-size: .7rem; font-weight: 800;
+            padding: .28rem 1rem; border-radius: 100px; letter-spacing: .07em;
+            text-transform: uppercase; white-space: nowrap;
+        }
+        .pkg-icon {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: var(--gray-100); display: flex; align-items: center;
+            justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem;
+        }
+        .pkg.featured .pkg-icon { background: rgba(37,99,235,.1); }
+        .pkg-name {
+            font-family: var(--font-d); font-size: 1.25rem; font-weight: 800;
+            color: var(--gray-900); margin-bottom: .2rem;
+        }
+        .pkg-price {
+            font-family: var(--font-d); font-size: 2rem; font-weight: 900;
+            color: var(--blue); margin-bottom: .4rem;
+        }
+        .pkg-price span { font-size: .85rem; font-weight: 500; color: var(--gray-400); }
+        .pkg-desc { font-size: .85rem; color: var(--gray-500); margin-bottom: 1.4rem; line-height: 1.65; }
+        .pkg-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.75rem; }
+        .pkg-list li {
+            display: flex; align-items: flex-start; gap: .6rem;
+            font-size: .865rem; color: var(--gray-700);
+        }
+        .pkg-list li::before {
+            content: '✓'; color: var(--blue); font-weight: 700;
+            margin-top: 1px; flex-shrink: 0;
+        }
+        .pkg-btn {
+            display: block; text-align: center; padding: .8rem 1.5rem;
+            border-radius: 9px; font-weight: 700; font-size: .875rem;
+            text-decoration: none; transition: all .2s;
+        }
+        .pkg:not(.featured) .pkg-btn {
+            background: var(--gray-100); color: var(--gray-700);
+            border: 1px solid var(--gray-200);
+        }
+        .pkg:not(.featured) .pkg-btn:hover { background: var(--gray-200); }
+        .pkg.featured .pkg-btn { background: var(--blue); color: #fff; }
+        .pkg.featured .pkg-btn:hover {
+            background: var(--blue-light);
+            box-shadow: 0 4px 18px rgba(37,99,235,.35);
+        }
+
+        /* ── HOW IT WORKS ─────────────────────────────── */
+        .process { background: #fff; }
+        .steps {
+            display: grid; grid-template-columns: repeat(4,1fr);
+            gap: 1.5rem; margin-top: 4rem; position: relative;
+        }
+        .steps::before {
+            content: ''; position: absolute;
+            top: 27px; left: calc(12.5% + 27px); right: calc(12.5% + 27px);
+            height: 2px;
+            background: linear-gradient(to right, var(--blue), var(--cyan));
+            z-index: 0;
+        }
+        .step { text-align: center; position: relative; z-index: 1; }
+        .step-num {
+            width: 54px; height: 54px; border-radius: 50%;
+            background: var(--blue); color: #fff;
+            font-family: var(--font-d); font-weight: 800; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem;
+            box-shadow: 0 0 0 6px #fff, 0 0 0 7.5px var(--gray-200);
+        }
+        .step h3 {
+            font-family: var(--font-d); font-size: 1.05rem; font-weight: 700;
+            color: var(--gray-900); margin-bottom: .5rem;
+        }
+        .step p { font-size: .85rem; color: var(--gray-500); line-height: 1.65; }
+
+        /* ── WHY US ───────────────────────────────────── */
+        .why { background: var(--navy); color: #fff; }
+        .why .eyebrow { color: var(--cyan); }
+        .why .section-h { color: #fff; }
+        .why .section-p { color: rgba(255,255,255,.6); }
+        .why-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1.25rem; margin-top: 3rem;
+        }
+        .why-card {
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: var(--r); padding: 1.75rem; transition: all .3s;
+        }
+        .why-card:hover {
+            background: rgba(255,255,255,.09);
+            transform: translateY(-5px);
+        }
+        .why-icon { font-size: 1.75rem; margin-bottom: .875rem; }
+        .why-card h3 {
+            font-family: var(--font-d); font-size: 1rem; font-weight: 700;
+            color: #fff; margin-bottom: .4rem;
+        }
+        .why-card p { font-size: .85rem; color: rgba(255,255,255,.58); line-height: 1.65; }
+
+        /* ── INQUIRY FORM ─────────────────────────────── */
+        .inquiry { background: var(--off-white); }
+        .inquiry-layout {
+            display: grid; grid-template-columns: 1fr 1.6fr;
+            gap: 4rem; align-items: start;
+        }
+        .inq-left h2 {
+            font-family: var(--font-d); font-size: clamp(1.6rem,3vw,2.3rem);
+            font-weight: 800; letter-spacing: -.03em;
+            color: var(--gray-900); margin-bottom: 1rem;
+        }
+        .inq-left > p {
+            color: var(--gray-500); line-height: 1.75; margin-bottom: 2.25rem;
+            font-size: .95rem;
+        }
+        .cdet {
+            display: flex; align-items: flex-start; gap: .875rem; margin-bottom: 1.25rem;
+        }
+        .cdet-icon {
+            width: 42px; height: 42px; border-radius: 10px;
+            background: rgba(37,99,235,.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .cdet-txt strong {
+            display: block; font-size: .72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: .06em;
+            color: var(--gray-400); margin-bottom: .1rem;
+        }
+        .cdet-txt span, .cdet-txt a {
+            font-size: .9rem; color: var(--gray-700); font-weight: 500;
+            text-decoration: none;
+        }
+        .cdet-txt a:hover { color: var(--blue); }
+        /* Form Card */
+        .form-card {
+            background: #fff; border-radius: var(--rl); padding: 2.5rem;
+            box-shadow: var(--sh-xl); border: 1px solid var(--gray-200);
+        }
+        .fsec {
+            font-size: .72rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: .09em; color: var(--blue); margin-bottom: 1rem;
+            padding-bottom: .5rem; border-bottom: 1.5px solid var(--gray-100);
+        }
+        .fdivider { height: 1px; background: var(--gray-100); margin: 1.5rem 0; }
+        .fg { display: flex; flex-direction: column; gap: .4rem; }
+        .fg label {
+            font-size: .8rem; font-weight: 600; color: var(--gray-700); letter-spacing: .01em;
+        }
+        .fg label .req { color: var(--blue); margin-left: 1px; }
+        .fg input, .fg select, .fg textarea {
+            width: 100%; padding: .7rem .9rem;
+            border: 1.5px solid var(--gray-200); border-radius: 8px;
+            font-size: .875rem; font-family: var(--font-b);
+            color: var(--gray-900); background: #fff;
+            transition: border-color .2s, box-shadow .2s; outline: none;
+            appearance: auto;
+        }
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+        }
+        .fg textarea { resize: vertical; min-height: 100px; }
+        .form-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .form-full { grid-column: 1 / -1; }
+        /* Style picker */
+        .style-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; }
+        .sopt {
+            border: 2px solid var(--gray-200); border-radius: 10px;
+            padding: 1rem .75rem; cursor: pointer; text-align: center;
+            transition: all .2s; user-select: none;
+        }
+        .sopt:hover { border-color: var(--blue); background: rgba(37,99,235,.03); }
+        .sopt input[type=radio] { display: none; }
+        .sopt.selected { border-color: var(--blue); background: rgba(37,99,235,.06); }
+        .sopt-icon { font-size: 1.5rem; margin-bottom: .4rem; }
+        .sopt-name { font-size: .8rem; font-weight: 700; color: var(--gray-700); margin-bottom: .1rem; }
+        .sopt-desc { font-size: .7rem; color: var(--gray-400); }
+        /* Submit */
+        .form-submit {
+            width: 100%; padding: .95rem; margin-top: 1.5rem;
+            background: var(--blue); color: #fff;
+            border: none; border-radius: 10px; font-size: 1rem;
+            font-weight: 700; font-family: var(--font-b); cursor: pointer;
+            transition: all .25s;
+        }
+        .form-submit:hover {
+            background: var(--blue-light);
+            box-shadow: 0 6px 22px rgba(37,99,235,.4);
+            transform: translateY(-1px);
+        }
+        .form-note {
+            text-align: center; font-size: .75rem;
+            color: var(--gray-400); margin-top: .7rem;
+        }
+        /* Success */
+        .success-msg {
+            display: none; text-align: center; padding: 3rem 1.5rem;
+        }
+        .success-msg .sic { font-size: 3rem; margin-bottom: 1rem; }
+        .success-msg h3 {
+            font-family: var(--font-d); font-size: 1.5rem;
+            font-weight: 800; color: var(--gray-900); margin-bottom: .5rem;
+        }
+        .success-msg p { color: var(--gray-500); line-height: 1.7; }
+        .success-msg a { color: var(--blue); font-weight: 600; }
+
+        /* ── CONTACT CARDS ────────────────────────────── */
+        .contact-sec { background: #fff; }
+        .contact-grid {
+            display: grid; grid-template-columns: repeat(4,1fr);
+            gap: 1.25rem; margin-top: 3rem;
+        }
+        .ccard {
+            background: var(--gray-50); border: 1.5px solid var(--gray-200);
+            border-radius: var(--r); padding: 1.75rem; text-align: center;
+            transition: all .3s;
+        }
+        .ccard:hover {
+            border-color: var(--blue);
+            transform: translateY(-5px);
+            box-shadow: var(--sh-lg);
+        }
+        .ccard-icon { font-size: 2rem; margin-bottom: .875rem; }
+        .ccard h3 {
+            font-size: .75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: .06em; color: var(--gray-400); margin-bottom: .5rem;
+        }
+        .ccard p, .ccard a {
+            font-size: .9rem; color: var(--gray-700);
+            font-weight: 500; text-decoration: none; line-height: 1.55;
+        }
+        .ccard a:hover { color: var(--blue); }
+
+        /* ── TRUST BAR ────────────────────────────────── */
+        .trust-bar { background: var(--blue); padding: 1.25rem 2rem; }
+        .trust-bar-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-around;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .tbi {
+            color: rgba(255,255,255,.9); font-size: .875rem; font-weight: 600;
+            display: flex; align-items: center; gap: .5rem;
+        }
+
+        /* ── FOOTER ───────────────────────────────────── */
+        footer {
+            background: var(--gray-900); color: rgba(255,255,255,.55);
+            padding: 3.5rem 2rem 1.5rem;
+        }
+        .foot-inner { max-width: 1100px; margin: 0 auto; }
+        .foot-top {
+            display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 3rem;
+        }
+        .foot-brand p {
+            font-size: .85rem; color: rgba(255,255,255,.45);
+            margin-top: 1rem; line-height: 1.7;
+        }
+        .foot-col h4 {
+            font-family: var(--font-d); font-size: .8rem; font-weight: 800;
+            color: #fff; text-transform: uppercase;
+            letter-spacing: .06em; margin-bottom: 1.2rem;
+        }
+        .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+        .foot-col ul li a {
+            color: rgba(255,255,255,.48); font-size: .85rem;
+            text-decoration: none; transition: color .2s;
+        }
+        .foot-col ul li a:hover { color: #fff; }
+        .foot-col ul li span { font-size: .85rem; }
+        .foot-bottom {
+            border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: .75rem;
+        }
+        .foot-bottom p { font-size: .78rem; }
+        .foot-bottom a { color: var(--blue-light); text-decoration: none; }
+
+        /* ── RESPONSIVE ───────────────────────────────── */
+        @media (max-width: 1024px) {
+            .pkg-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .steps::before { display: none; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+            .foot-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            section { padding: 3.5rem 1.25rem; }
+            .inquiry-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .form-2 { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .form-card { padding: 1.75rem; }
+            .trust-bar-inner { flex-direction: column; gap: .75rem; }
+            .foot-top { grid-template-columns: 1fr; gap: 1.75rem; }
+        }
+        @media (max-width: 540px) {
+            .hero-btns { flex-direction: column; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .foot-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+    <a href="#home" class="nav-logo">
+        <div class="logo-grid">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+        <span class="logo-text">Grid<em>spire</em></span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#inquiry" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="menuClose">✕</button>
+    <a href="#services"  onclick="closeMenu()">Services</a>
+    <a href="#process"   onclick="closeMenu()">Process</a>
+    <a href="#why"       onclick="closeMenu()">Why Us</a>
+    <a href="#contact"   onclick="closeMenu()">Contact</a>
+    <a href="#inquiry"   onclick="closeMenu()" style="color:var(--cyan)">Get a Quote →</a>
+</div>
+
+<!-- ══ HERO ═════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+    <div class="hero-dots"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+        <div class="pill">
+            <span class="pill-dot"></span>
+            📍 Based in Pearland, TX — Serving Greater Houston
+        </div>
+        <h1>Your Website,<br>Built <span class="grad">Fast. Built Right.</span></h1>
+        <p class="hero-sub">
+            Professional, affordable web design for small businesses across the Houston area.
+            No agency overhead — just clean, custom sites delivered on time and on budget.
+        </p>
+        <div class="hero-btns">
+            <a href="#inquiry" class="btn-primary">🚀 Start Your Project</a>
+            <a href="#services" class="btn-secondary">See Our Packages ↓</a>
+        </div>
+        <div class="trust-row">
+            <div class="trust-item">⚡ Fast Turnaround</div>
+            <div class="trust-item">💸 Affordable Pricing</div>
+            <div class="trust-item">🤝 Direct Communication</div>
+            <div class="trust-item">📞 7 Days a Week Support</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TRUST BAR ═════════════════════════════════════════════════ -->
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="tbi">✅ Mobile-Friendly Design</div>
+        <div class="tbi">✅ You Own Everything</div>
+        <div class="tbi">✅ SEO Ready</div>
+        <div class="tbi">✅ No Hidden Fees</div>
+        <div class="tbi">✅ Houston-Area Local Business</div>
+    </div>
+</div>
+
+<!-- ══ SERVICES ══════════════════════════════════════════════════ -->
+<section class="services" id="services">
+    <div class="inner">
+        <div class="centered">
+            <span class="eyebrow">Packages &amp; Pricing</span>
+            <h2 class="section-h">Simple, Honest Pricing</h2>
+            <p class="section-p">
+                No hidden fees. No surprise invoices. Pick the package that fits your business,
+                or reach out for a fully custom quote.
+            </p>
+        </div>
+
+        <div class="pkg-grid">
+            <!-- Starter -->
+            <div class="pkg">
+                <div class="pkg-icon">🌐</div>
+                <div class="pkg-name">Starter Site</div>
+                <div class="pkg-price">$299 <span>/ starting at</span></div>
+                <p class="pkg-desc">Perfect for new businesses that need a clean, professional web presence — fast and affordable.</p>
+                <ul class="pkg-list">
+                    <li>1–3 page website</li>
+                    <li>Mobile responsive design</li>
+                    <li>Contact form included</li>
+                    <li>Basic SEO setup</li>
+                    <li>Google Maps integration</li>
+                    <li>Delivered in 5–7 business days</li>
+                    <li>1 round of revisions</li>
+                </ul>
+                <a href="#inquiry" class="pkg-btn">Get Started</a>
+            </div>
+
+            <!-- Business – Featured -->
+            <div class="pkg featured">
+                <div class="featured-tag">⭐ Most Popular</div>
+                <div class="pkg-icon">🏢</div>
+                <div class="pkg-name">Business Package</div>
+                <div class="pkg-price">$599 <span>/ starting at</span></div>
+                <p class="pkg-desc">The complete solution for businesses ready to grow. Custom-branded, feature-rich, built to convert.</p>
+                <ul class="pkg-list">
+                    <li>4–7 page website</li>
+                    <li>Custom branding — colors, fonts, identity</li>
+                    <li>Google Maps + Social media links</li>
+                    <li>Full SEO optimization</li>
+                    <li>Photo gallery / service listings</li>
+                    <li>Delivered in 7–14 business days</li>
+                    <li>2 rounds of revisions</li>
+                    <li>30 days post-launch support</li>
+                </ul>
+                <a href="#inquiry" class="pkg-btn">Get Started</a>
+            </div>
+
+            <!-- Custom -->
+            <div class="pkg">
+                <div class="pkg-icon">✨</div>
+                <div class="pkg-name">Full Custom</div>
+                <div class="pkg-price">Custom <span>quote</span></div>
+                <p class="pkg-desc">A fully unique, bespoke website built exactly to your vision — no templates, no limits.</p>
+                <ul class="pkg-list">
+                    <li>Unlimited pages</li>
+                    <li>100% unique custom design</li>
+                    <li>Online store / e-commerce</li>
+                    <li>Booking &amp; appointment systems</li>
+                    <li>Advanced animations &amp; interactions</li>
+                    <li>Priority delivery</li>
+                    <li>Flexible revisions</li>
+                    <li>Extended post-launch support</li>
+                </ul>
+                <a href="#inquiry" class="pkg-btn">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══════════════════════════════════════════════ -->
+<section class="process" id="process">
+    <div class="inner">
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-h">From Idea to Live Site in Days</h2>
+        <p class="section-p">A streamlined process designed to get your site up quickly without sacrificing quality or craftsmanship.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Submit Inquiry</h3>
+                <p>Fill out the form below with your project details. I'll review your needs and reach back to you within 24 hours.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Free Consultation</h3>
+                <p>We'll talk through your goals and vision by phone or text. No pressure — just a real conversation about what's right for you.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Design &amp; Build</h3>
+                <p>I get to work building your site. You'll receive a preview link to review and request changes before anything goes live.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h3>Launch &amp; Support</h3>
+                <p>Your site goes live. You own it completely. I stay available for questions, updates, or future additions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ WHY US ═════════════════════════════════════════════════════ -->
+<section class="why" id="why">
+    <div class="inner">
+        <span class="eyebrow">Why Choose Gridspire</span>
+        <h2 class="section-h">Built Different. Built Local.</h2>
+        <p class="section-p">You get direct communication, faster results, and a site that actually fits your business — not a generic template from a faceless agency.</p>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">📍</div>
+                <h3>Locally Based in Pearland, TX</h3>
+                <p>I understand the Houston market and what local customers are looking for. You're supporting a local business, not a corporation.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <h3>Fast Delivery</h3>
+                <p>Most sites go live in under two weeks. No months-long waiting periods — you get results fast so you can start winning customers.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">💰</div>
+                <h3>Transparent, Honest Pricing</h3>
+                <p>What you see is what you pay. Clear packages, no hidden fees, and flexible options designed to fit small business budgets.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">📱</div>
+                <h3>Mobile-First Design</h3>
+                <p>Over 60% of web traffic is on mobile. Every site I build looks and performs great on phones, tablets, and desktops — guaranteed.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🎯</div>
+                <h3>Business-Focused Results</h3>
+                <p>Every design decision is made with one goal: helping your business attract more customers and convert visitors into paying clients.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🛡️</div>
+                <h3>You Own Everything</h3>
+                <p>When your site is done, it's yours — the code, the domain, all the content. No subscriptions, no lock-in, no strings attached.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ INQUIRY FORM ═══════════════════════════════════════════════ -->
+<section class="inquiry" id="inquiry">
+    <div class="inner">
+        <div class="inquiry-layout">
+
+            <!-- LEFT: Contact Info -->
+            <div class="inq-left">
+                <span class="eyebrow">Let's Work Together</span>
+                <h2>Tell Me About Your Project</h2>
+                <p>Fill out the form and I'll get back to you within 24 hours to discuss your project. Prefer to talk right away? Call or text me directly during business hours — I always pick up.</p>
+
+                <div class="cdet">
+                    <div class="cdet-icon">📞</div>
+                    <div class="cdet-txt">
+                        <strong>Phone / Text</strong>
+                        <a href="tel:3464615530">(346) 461-5530</a>
+                    </div>
+                </div>
+                <div class="cdet">
+                    <div class="cdet-icon">📧</div>
+                    <div class="cdet-txt">
+                        <strong>Email</strong>
+                        <a href="mailto:hunterserg3@gmail.com">hunterserg3@gmail.com</a>
+                    </div>
+                </div>
+                <div class="cdet">
+                    <div class="cdet-icon">🕐</div>
+                    <div class="cdet-txt">
+                        <strong>Business Hours</strong>
+                        <span>Monday – Sunday: 9:00 AM – 8:00 PM</span>
+                    </div>
+                </div>
+                <div class="cdet">
+                    <div class="cdet-icon">📍</div>
+                    <div class="cdet-txt">
+                        <strong>Location</strong>
+                        <span>Pearland, TX — Serving Greater Houston &amp; Beyond</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; background: rgba(37,99,235,.07); border: 1.5px solid rgba(37,99,235,.18); border-radius: var(--r); padding: 1.25rem;">
+                    <p style="font-size:.85rem; color:var(--gray-700); line-height:1.65;">
+                        <strong style="color:var(--blue);">💬 Response Guarantee:</strong> I respond to every inquiry within 24 hours — often much sooner. Your information is private and will never be shared or sold.
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIGHT: Form -->
+            <div class="form-card" id="formContainer">
+                <form id="inquiryForm" onsubmit="handleSubmit(event)" novalidate>
+
+                    <div class="fsec">Contact Information</div>
+                    <div class="form-2" style="margin-bottom:1.25rem;">
+                        <div class="fg">
+                            <label>Full Name <span class="req">*</span></label>
+                            <input type="text" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="fg">
+                            <label>Phone Number <span class="req">*</span></label>
+                            <input type="tel" name="phone" placeholder="(123) 456-7890" required>
+                        </div>
+                        <div class="fg">
+                            <label>Email Address <span class="req">*</span></label>
+                            <input type="email" name="email" placeholder="you@yourbusiness.com" required>
+                        </div>
+                        <div class="fg">
+                            <label>Business Name</label>
+                            <input type="text" name="business" placeholder="Your business name (if any)">
+                        </div>
+                    </div>
+
+                    <div class="fdivider"></div>
+                    <div class="fsec">About Your Business &amp; Website</div>
+                    <div class="form-2" style="margin-bottom:1.25rem;">
+                        <div class="fg">
+                            <label>What type of business do you own? <span class="req">*</span></label>
+                            <select name="businessType" required>
+                                <option value="" disabled selected>Select your industry</option>
+                                <option>Restaurant / Food &amp; Beverage</option>
+                                <option>Retail / Online Store</option>
+                                <option>Professional Services (Law, Accounting, Consulting)</option>
+                                <option>Healthcare / Medical</option>
+                                <option>Real Estate</option>
+                                <option>Construction / Contracting</option>
+                                <option>Beauty / Wellness / Fitness</option>
+                                <option>Automotive</option>
+                                <option>Non-Profit / Organization</option>
+                                <option>Startup / Tech</option>
+                                <option>Entertainment / Events</option>
+                                <option>Landscaping / Home Services</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label>What will the website be used for? <span class="req">*</span></label>
+                            <select name="purpose" required>
+                                <option value="" disabled selected>Primary purpose</option>
+                                <option>Showcase My Business / Build Credibility</option>
+                                <option>Sell Products Online (E-commerce)</option>
+                                <option>Accept Bookings / Appointments</option>
+                                <option>Generate Leads &amp; Inquiries</option>
+                                <option>Share Information / Blog</option>
+                                <option>Portfolio / Personal Brand</option>
+                                <option>Combination of several</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label>Do you already have a website?</label>
+                            <select name="existing">
+                                <option value="" disabled selected>Select one</option>
+                                <option>No — this is a brand new site</option>
+                                <option>Yes — I need a full redesign</option>
+                                <option>Yes — I just need updates or additions</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label>How many pages do you need?</label>
+                            <select name="pages">
+                                <option value="" disabled selected>Estimated page count</option>
+                                <option>1–3 pages (simple / starter)</option>
+                                <option>4–7 pages (standard business)</option>
+                                <option>8+ pages (larger site)</option>
+                                <option>Not sure yet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fdivider"></div>
+                    <div class="fsec">Design Preference</div>
+                    <div class="fg form-full" style="margin-bottom:1.25rem;">
+                        <label>Which style best fits your vision? <span class="req">*</span></label>
+                        <div class="style-grid" id="styleGrid">
+                            <div class="sopt" data-val="basic" onclick="selectStyle(this)">
+                                <input type="radio" name="style" value="basic">
+                                <div class="sopt-icon">📄</div>
+                                <div class="sopt-name">Clean &amp; Simple</div>
+                                <div class="sopt-desc">Template-based, fast &amp; affordable</div>
+                            </div>
+                            <div class="sopt" data-val="branded" onclick="selectStyle(this)">
+                                <input type="radio" name="style" value="branded">
+                                <div class="sopt-icon">🎨</div>
+                                <div class="sopt-name">Branded &amp; Professional</div>
+                                <div class="sopt-desc">Custom colors, fonts &amp; identity</div>
+                            </div>
+                            <div class="sopt" data-val="custom" onclick="selectStyle(this)">
+                                <input type="radio" name="style" value="custom">
+                                <div class="sopt-icon">✨</div>
+                                <div class="sopt-name">Fully Custom</div>
+                                <div class="sopt-desc">Unique design built from scratch</div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="styleHidden" id="styleHidden" required>
+                    </div>
+
+                    <div class="form-2" style="margin-bottom:1.25rem;">
+                        <div class="fg">
+                            <label>What's your timeline?</label>
+                            <select name="timeline">
+                                <option value="" disabled selected>When do you need it?</option>
+                                <option>ASAP (1–2 weeks)</option>
+                                <option>Within 1 month</option>
+                                <option>1–3 months</option>
+                                <option>I'm flexible</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label>Estimated budget?</label>
+                            <select name="budget">
+                                <option value="" disabled selected>Select a range</option>
+                                <option>Under $300</option>
+                                <option>$300 – $600</option>
+                                <option>$600 – $1,200</option>
+                                <option>$1,200 – $2,500</option>
+                                <option>$2,500+</option>
+                                <option>Let's discuss</option>
+                            </select>
+                        </div>
+                        <div class="fg form-full">
+                            <label>Anything else I should know?</label>
+                            <textarea name="notes" placeholder="Tell me about your business, specific features you need, websites you love the style of, or anything else that will help me build your perfect site..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="form-submit">Send My Inquiry →</button>
+                    <p class="form-note">🔒 Your info is private &amp; will never be shared. I'll respond within 24 hours.</p>
+                </form>
+
+                <div class="success-msg" id="successMsg">
+                    <div class="sic">✅</div>
+                    <h3>Inquiry Received!</h3>
+                    <p>
+                        Thanks for reaching out! Your inquiry has been sent to my email. I'll review your project details and respond within 24 hours.<br><br>
+                        In a hurry? Call or text me directly:<br>
+                        <strong><a href="tel:3464615530">(346) 461-5530</a></strong><br>
+                        <span style="font-size:.8rem;color:var(--gray-400);">Available Mon–Sun, 9 AM – 8 PM</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT CARDS ══════════════════════════════════════════════ -->
+<section class="contact-sec" id="contact">
+    <div class="inner">
+        <span class="eyebrow">Contact &amp; Location</span>
+        <h2 class="section-h">Reach Out Anytime</h2>
+        <p class="section-p">Multiple ways to get in touch. I'm a real person — you'll always talk directly to me, never a call center.</p>
+        <div class="contact-grid">
+            <div class="ccard">
+                <div class="ccard-icon">📞</div>
+                <h3>Phone / Text</h3>
+                <a href="tel:3464615530">(346) 461-5530</a>
+                <p style="font-size:.78rem;color:var(--gray-400);margin-top:.3rem;">Calls &amp; texts always welcome</p>
+            </div>
+            <div class="ccard">
+                <div class="ccard-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:hunterserg3@gmail.com">hunterserg3@gmail.com</a>
+                <p style="font-size:.78rem;color:var(--gray-400);margin-top:.3rem;">Response within 24 hours</p>
+            </div>
+            <div class="ccard">
+                <div class="ccard-icon">🕐</div>
+                <h3>Business Hours</h3>
+                <p>Monday – Sunday<br>9:00 AM – 8:00 PM CST</p>
+            </div>
+            <div class="ccard">
+                <div class="ccard-icon">📍</div>
+                <h3>Service Area</h3>
+                <p>Pearland, TX<br>Houston &amp; Surrounding Areas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════ -->
+<footer>
+    <div class="foot-inner">
+        <div class="foot-top">
+            <div class="foot-brand">
+                <a href="#home" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-grid">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="logo-text" style="font-size:1.2rem;">Grid<em>spire</em></span>
+                </a>
+                <p>Professional, affordable web design for small businesses in Pearland, Houston, and the greater Texas area. Fast delivery. Real results. Honest prices.</p>
+            </div>
+            <div class="foot-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Starter Site — from $299</a></li>
+                    <li><a href="#services">Business Package — from $599</a></li>
+                    <li><a href="#services">Full Custom Design</a></li>
+                    <li><a href="#inquiry">Get a Free Quote</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#why">Why Choose Us</a></li>
+                    <li><a href="#process">How It Works</a></li>
+                    <li><a href="#inquiry">Start a Project</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li><span>📞 <a href="tel:3464615530" style="color:rgba(255,255,255,.48);text-decoration:none;">(346) 461-5530</a></span></li>
+                    <li><span>📧 <a href="mailto:hunterserg3@gmail.com" style="color:rgba(255,255,255,.48);text-decoration:none;">hunterserg3@gmail.com</a></span></li>
+                    <li><span>📍 Pearland, TX</span></li>
+                    <li><span>🕐 Mon–Sun, 9 AM–8 PM</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <p>© 2026 Gridspire Web Design. All rights reserved. | Pearland, TX</p>
+            <p>Serving Houston &amp; surrounding areas | <a href="tel:3464615530">(346) 461-5530</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- ══ JAVASCRIPT ═════════════════════════════════════════════════ -->
+<script>
+    // Navbar scroll effect
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.add('open');
+    });
+    document.getElementById('menuClose').addEventListener('click', closeMenu);
+    function closeMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Style selector
+    function selectStyle(el) {
+        document.querySelectorAll('.sopt').forEach(s => s.classList.remove('selected'));
+        el.classList.add('selected');
+        el.querySelector('input[type=radio]').checked = true;
+        document.getElementById('styleHidden').value = el.dataset.val;
+    }
+
+    // Form submission → mailto
+    function handleSubmit(e) {
+        e.preventDefault();
+        const f = document.getElementById('inquiryForm');
+
+        // Validate style selected
+        if (!document.getElementById('styleHidden').value) {
+            alert('Please select a design style preference before submitting.');
+            return;
+        }
+
+        const d = Object.fromEntries(new FormData(f).entries());
+
+        const subject = encodeURIComponent(
+            `New Website Inquiry — ${d.name}${d.business ? ' / ' + d.business : ''}`
+        );
+        const body = encodeURIComponent([
+            '═══════════════════════════════════',
+            '  NEW INQUIRY FROM GRIDSPIRE.COM  ',
+            '═══════════════════════════════════',
+            '',
+            'CONTACT DETAILS:',
+            `  Name:     ${d.name}`,
+            `  Phone:    ${d.phone}`,
+            `  Email:    ${d.email}`,
+            `  Business: ${d.business || 'N/A'}`,
+            '',
+            'BUSINESS & WEBSITE:',
+            `  Industry:       ${d.businessType}`,
+            `  Purpose:        ${d.purpose}`,
+            `  Existing site:  ${d.existing || 'N/A'}`,
+            `  Page count:     ${d.pages || 'N/A'}`,
+            '',
+            'DESIGN & PROJECT:',
+            `  Style:     ${d.styleHidden}`,
+            `  Timeline:  ${d.timeline || 'N/A'}`,
+            `  Budget:    ${d.budget || 'N/A'}`,
+            '',
+            'ADDITIONAL NOTES:',
+            d.notes || 'None provided.',
+            '',
+            '═══════════════════════════════════'
+        ].join('\n'));
+
+        window.location.href = `mailto:hunterserg3@gmail.com?subject=${subject}&body=${body}`;
+
+        // Show success UI
+        f.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
